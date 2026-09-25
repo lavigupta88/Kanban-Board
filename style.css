@@ -52,7 +52,10 @@ nav{
     padding: var(--nav-padding); 
     display: flex; 
     align-items: center; 
-    justify-content: space-between; 
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-color);
 } 
  
 nav button{ 
