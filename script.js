@@ -23,10 +23,15 @@
     })
 
     const deleteButton = div.querySelector("button");
-    deleteButton.addEventListener("click", ()=>{
+
+deleteButton.addEventListener("click", () => {
+
+    if(confirm("Delete this task?")) {
         div.remove();
         updateTaskCount();
-    })
+    }
+
+});
     return div;
 }
 
@@ -108,6 +113,12 @@ const toggleModalButton = document.querySelector("#toggle-modal")
 const modalBg = document.querySelector(".modal .bg")
 const modal = document.querySelector(".modal")
 const addTaskButton = document.querySelector("#add-new-task")
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        modal.classList.remove("active");
+    }
+});
 
 toggleModalButton.addEventListener("click", ()=>{
     modal.classList.toggle("active")

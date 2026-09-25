@@ -149,21 +149,41 @@ section .task-column .task button{
 
 .modal .center{
     background-color: var(--bg-button-color);
+    width: min(500px, 90vw);
     padding: var(--padding-xxl);
     border-radius: var(--border-radius-m);
     display: flex;
     flex-direction: column;
     gap: var(--padding-m);
     z-index: 10;
+    animation: modalOpen 0.25s ease;
 }
 
-.modal .center input, .modal .center textarea, .modal .center select{
+.modal .center input,
+.modal .center textarea,
+.modal .center select{
+    width: 100%;
     background-color: var(--bg-task-color);
     color: var(--primary-text-color);
     border: none;
     outline: none;
-    padding: var(--padding-m);
+    padding: 12px 15px;
     border-radius: var(--border-radius-s);
+    font-size: 1rem;
+}
+
+.modal .center input{
+    height: 50px;
+}
+
+.modal .center textarea{
+    min-height: 140px;
+    resize: vertical;
+}
+
+.modal .center input:focus,
+.modal .center textarea:focus{
+    outline: 2px solid rgba(255,255,255,0.2);
 }
 
 .modal .center button{
@@ -171,9 +191,38 @@ section .task-column .task button{
     color: var(--primary-text-color);
     border: none;
     outline: none;
-    padding: var(--padding-m) var(--padding-l);
+    padding: 12px 24px;
     border-radius: var(--border-radius-m);
     cursor: pointer;
     width: fit-content;
     align-self: center;
+    transition: 0.2s ease;
+}
+
+.modal .center button:hover{
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+@keyframes modalOpen{
+    from{
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media(max-width: 600px){
+
+    .modal .center{
+        width: 95vw;
+        padding: 20px;
+    }
+
+    .modal .center textarea{
+        min-height: 100px;
+    }
 }
